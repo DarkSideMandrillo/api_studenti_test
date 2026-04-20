@@ -10,7 +10,7 @@ public class ApiServer {
     public static void main(String[] args) {
 
 
-
+        int port = Integer.parseInt(System.getenv().getOrDefault("PORT", "7070"));
 
         Javalin app = Javalin.create(config -> {
             // Configurazione CORS per Javalin 5.x / 6.x
@@ -24,7 +24,7 @@ public class ApiServer {
             config.requestLogger.http((ctx, ms) -> {
                 System.out.println(ctx.method() + " " + ctx.path() + " - " + ms + "ms");
             });
-        }).start(7070);
+        }).start(port);
 
         System.out.println("🚀 Server avviato: http://localhost:7070");
 
